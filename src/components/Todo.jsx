@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "./Todo.css";
+import { MdDeleteForever, MdCheck } from "react-icons/md";
+
+
 const Todo = () => {
   const [inputValue, setValue] = useState("");
 
-  const [task, setTask] = useState([])
+  const [task, setTask] = useState([]);
 
   const handleInputChange = (value) => {
     setValue(value);
@@ -13,9 +16,18 @@ const Todo = () => {
     e.preventDefault();
 
     if (!inputValue) {
-        return;
+      return;
     }
-    setTask((prev) => [...prev, inputValue])
+
+    if (task.includes(inputValue)) {
+      setValue("");
+
+      return;
+    }
+
+    setTask((prev) => [...prev, inputValue]);
+
+    setValue("");
   };
 
   return (
@@ -40,6 +52,21 @@ const Todo = () => {
             </button>
           </div>
         </form>
+      </section>
+      <section className="myUOrdList">
+      <ul>
+        {
+          task.map((item, index) =>{
+            return(
+              <li key={index} className="todo-item">
+                <span>{item}</span>
+                <button className="check-btn"><MdCheck/></button>
+                <button className="delete-btn"><MdDeleteForever /></button>
+              </li>
+            )
+          })
+        }
+      </ul>
       </section>
     </section>
   );
