@@ -1,9 +1,22 @@
-
+import './Todo.css'
 const Todo = () => {
     return (
-        <div>
-            <h1>this is tode</h1>
-        </div>
+        <section className="todo-container">
+            <header>
+                <h1>Tode List</h1>
+            </header>
+            <section className='form'>
+                <form >
+                    <div>
+                        <input type="text" className='todo-input' autoComplete='off'/>
+                    </div>
+                    <div>
+                        <button type='submit' className="todo-btn">Add Task</button>
+                    </div>
+                </form>
+            </section>
+            
+        </section>
     );
 };
 
